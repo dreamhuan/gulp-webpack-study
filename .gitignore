@@ -1,0 +1,14 @@
+# project
+
+dist/
+node_modules/
+src/lib
+
+# IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# vscode
+.vscode

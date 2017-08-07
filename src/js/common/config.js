@@ -1,0 +1,1 @@
+export const hostip = 'localhost:8080';
