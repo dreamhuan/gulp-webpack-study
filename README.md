@@ -6,6 +6,7 @@ dreamhuan <fu_kaiqi@qq.com>
 
 ### 环境
 1. nodejs(6.10.0)/npm(3.10.10)
+1. bower(1.8.0)
 1. webpack(3.4.1)
 1. gulp(3.9.1)
 
@@ -13,6 +14,7 @@ gulp控制主流程，其中js部分扔给webpack编译
   
 ### 使用
 1. npm i
+1. bower i
 1. npm start
 1. localhost:3000/app/index.html
   
@@ -22,6 +24,7 @@ gulp控制主流程，其中js部分扔给webpack编译
 1. 开发时HTML文件放在src/app,通用文件(header,footer)可以新建个文件夹引入,支持静态引入@@include("./xxx/xxx.html")见index.html的做法
 1. 保持html和对应的js,less(sass)名一致现在样式用的是less要用sass的话修改gulp的styles task注释换一下就好了
 1. 需要自己在html引入文件路径写编译完后的路径("../css/xxx"),("../js/xxx"),("../lib/xxx/xxx")
+1. 第三方库的话能用bower就用bower按转，装在src/lib下，没有bower的就下载完放到src/lib下
 
 ### 解决的问题
 1. js编译，可以愉快的使用es6了
