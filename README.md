@@ -22,8 +22,8 @@ gulp控制主流程，其中js部分扔给webpack编译
   
 ### 开发说明
 1. 开发时HTML文件放在src/app,通用文件(header,footer)可以新建个文件夹引入,支持静态引入@@include("./xxx/xxx.html")见index.html的做法
-1. 保持html和对应的js,less(sass)名一致现在样式用的是less要用sass的话修改gulp的styles task注释换一下就好了
-1. 需要自己在html引入文件路径写`编译完后`的路径"../css/xxx","../js/xxx","../lib/xxx/xxx"(尤其要注意的是css！因为项目路径是style，编译后是css，至于为什么不改成一样的。我也不知道啊。。。大概当时脑子不对。你要改的话就改一下gulpfile的styles的task)
+1. 保持html和对应的js,less(sass)名一致现在样式用的是less。要用sass的话`gulpfile.js`注释掉32-41行，取消44-53注释，93行`*.less`改为`*.scss`
+1. 需要自己在html引入文件路径写`编译完后`的路径"../css/xxx","../js/xxx","../lib/xxx/xxx"(尤其要注意的是css！因为项目路径是style，编译后是css，。至于为什么不改成一样的，我也不知道啊。。。大概当时脑子不对。你要改的话就改一下gulpfile的styles的task)
 1. 第三方库的话能用bower就用bower安装，装在src/lib下，没有bower的就下载完放到src/lib下，然后正常引入就好，注意顺序
 
 ### 解决的问题
