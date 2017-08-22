@@ -6,6 +6,7 @@ var path = require('path');
 var glob = require('glob');
 
 var config = {
+    devtool: "source-map",  //生成sourcemap,便于开发调试
     entry: getJsEntry('./src/js/*.js'),
     output: {
         path: path.resolve(__dirname, './dist/js'),
