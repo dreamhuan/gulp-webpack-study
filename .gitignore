@@ -2,7 +2,7 @@
 
 dist/
 node_modules/
-src/lib
+src/lib/bower
 
 # IntelliJ IDEA
 *.iml

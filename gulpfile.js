@@ -14,7 +14,7 @@ browserSync = require('browser-sync').create();//server服务
 
 // 清理
 gulp.task('clean', function () {
-    return gulp.src(['dist/app', 'dist/css', 'dist/js', 'dist/img'], {read: false})
+    return gulp.src(['dist/app', 'dist/css', 'dist/font', 'dist/img', 'dist/js', 'dist/lib'], {read: false})
         .pipe(clean());
 });
 
@@ -31,7 +31,7 @@ gulp.task('html', function () {
 
 // 编译压缩less
 gulp.task('styles', function () {
-    return gulp.src('src/style/*.less')
+    return gulp.src('src/css/*.less')
         .pipe(less())
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(gulp.dest('dist/css'))
@@ -43,7 +43,7 @@ gulp.task('styles', function () {
 
 // // 编译压缩sass
 // gulp.task('styles', function () {
-//     return gulp.src('src/style/*.scss')
+//     return gulp.src('src/css/*.scss')
 //         .pipe(sass())
 //         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 //         .pipe(gulp.dest('dist/css'))
@@ -90,7 +90,7 @@ gulp.task('default', ['html', 'styles', 'scripts', 'images', 'fonts', 'lib'], fu
     });
 
     //监听文件变化实时编译
-    gulp.watch('src/style/**/*.less', ['styles']);
+    gulp.watch('src/css/**/*.less', ['styles']);
     gulp.watch('src/img/**/*', ['images']);
     gulp.watch('src/app/**/*.html', ['scripts']);
     gulp.watch('src/js/**/*.js', ['scripts']);
