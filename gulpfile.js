@@ -90,10 +90,10 @@ gulp.task('default', ['html', 'styles', 'scripts', 'images', 'fonts', 'lib'], fu
     });
 
     //监听文件变化实时编译
-    gulp.watch('src/css/**/*.less', ['styles']);
+    gulp.watch('src/css/**/*', ['styles']);
     gulp.watch('src/img/**/*', ['images']);
-    gulp.watch('src/app/**/*.html', ['scripts']);
-    gulp.watch('src/js/**/*.js', ['scripts']);
+    gulp.watch('src/app/**/*', ['scripts']);
+    gulp.watch('src/js/**/*', ['scripts']);
 
     //监听当dist文件夹下任何文件发生变化，则自动刷新浏览器
     gulp.watch('./dist/**', function () {
