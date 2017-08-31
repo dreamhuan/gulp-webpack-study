@@ -62,6 +62,10 @@ gulp.task('css', function () {
         .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('styles', function () {
+    return gulp.run(['less', 'sass', 'css']);
+});
+
 //用webpack处理js 顺便插入到相应html中，所以需要html任务执行完毕
 gulp.task('scripts', ['html', 'styles'], function (callback) {
     return gulp.src(['src/js/*.js', 'dist/css/*.css'])
@@ -88,8 +92,14 @@ gulp.task('lib', function () {
         .pipe(gulp.dest('dist/lib'));
 });
 
+// src下的文件 转移
+gulp.task('src', function () {
+    return gulp.src('src/*')
+        .pipe(gulp.dest('dist'));
+});
+
 //默认任务
-gulp.task('default', ['html', 'styles', 'scripts', 'images', 'fonts', 'lib'], function () {
+gulp.task('default', ['html', 'styles', 'scripts', 'images', 'fonts', 'lib','src'], function () {
 
     //初始化browserSync
     browserSync.init({
@@ -99,10 +109,11 @@ gulp.task('default', ['html', 'styles', 'scripts', 'images', 'fonts', 'lib'], fu
     });
 
     //监听文件变化实时编译
-    gulp.watch('src/css/**/*', ['less','sass','css']);
+    gulp.watch('src/css/**/*', ['styles']);
     gulp.watch('src/img/**/*', ['images']);
     gulp.watch('src/app/**/*', ['scripts']);
     gulp.watch('src/js/**/*', ['scripts']);
+    gulp.watch('src/*', ['src']);
 
     //监听当dist文件夹下任何文件发生变化，则自动刷新浏览器
     gulp.watch('./dist/**', function () {
@@ -113,5 +124,5 @@ gulp.task('default', ['html', 'styles', 'scripts', 'images', 'fonts', 'lib'], fu
 
 
 gulp.task('build', ['clean'], function () {
-    gulp.run('html', 'styles', 'scripts', 'images', 'fonts', 'lib');
+    gulp.run('html', 'styles', 'scripts', 'images', 'fonts', 'lib','src');
 });
