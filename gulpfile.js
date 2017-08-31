@@ -30,7 +30,7 @@ gulp.task('html', function () {
 });
 
 // 编译压缩less
-gulp.task('styles', function () {
+gulp.task('less', function () {
     return gulp.src('src/css/*.less')
         .pipe(less())
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
@@ -41,17 +41,26 @@ gulp.task('styles', function () {
 });
 
 
-// // 编译压缩sass
-// gulp.task('styles', function () {
-//     return gulp.src('src/css/*.scss')
-//         .pipe(sass())
-//         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-//         .pipe(gulp.dest('dist/css'))
-//         .pipe(rename({suffix: '.min'}))
-//         .pipe(minifycss())
-//         .pipe(gulp.dest('dist/css'));
-// });
+// 编译压缩sass
+gulp.task('sass', function () {
+    return gulp.src('src/css/*.scss')
+        .pipe(sass())
+        .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+        .pipe(gulp.dest('dist/css'))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(minifycss())
+        .pipe(gulp.dest('dist/css'));
+});
 
+// 压缩css
+gulp.task('css', function () {
+    return gulp.src('src/css/*.css')
+        .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+        .pipe(gulp.dest('dist/css'))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(minifycss())
+        .pipe(gulp.dest('dist/css'));
+});
 
 //用webpack处理js 顺便插入到相应html中，所以需要html任务执行完毕
 gulp.task('scripts', ['html', 'styles'], function (callback) {
@@ -90,7 +99,7 @@ gulp.task('default', ['html', 'styles', 'scripts', 'images', 'fonts', 'lib'], fu
     });
 
     //监听文件变化实时编译
-    gulp.watch('src/css/**/*', ['styles']);
+    gulp.watch('src/css/**/*', ['less','sass','css']);
     gulp.watch('src/img/**/*', ['images']);
     gulp.watch('src/app/**/*', ['scripts']);
     gulp.watch('src/js/**/*', ['scripts']);
