@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');//编译sass
+// var sass = require('gulp-sass');//编译sass
 var less = require('gulp-less');//编译less
 var autoprefixer = require('gulp-autoprefixer');//前缀补全
 var minifycss = require('gulp-minify-css');//压缩css
@@ -41,16 +41,16 @@ gulp.task('less', function () {
 });
 
 
-// 编译压缩sass
-gulp.task('sass', function () {
-    return gulp.src('src/css/*.scss')
-        .pipe(sass())
-        .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-        .pipe(gulp.dest('dist/css'))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(minifycss())
-        .pipe(gulp.dest('dist/css'));
-});
+// // 编译压缩sass
+// gulp.task('sass', function () {
+//     return gulp.src('src/css/*.scss')
+//         .pipe(sass())
+//         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+//         .pipe(gulp.dest('dist/css'))
+//         .pipe(rename({suffix: '.min'}))
+//         .pipe(minifycss())
+//         .pipe(gulp.dest('dist/css'));
+// });
 
 // 压缩css
 gulp.task('css', function () {
@@ -63,7 +63,8 @@ gulp.task('css', function () {
 });
 
 gulp.task('styles', function () {
-    return gulp.run(['less', 'sass', 'css']);
+    // return gulp.run(['less', 'sass', 'css']);
+    return gulp.run(['less', 'css']);
 });
 
 //用webpack处理js 顺便插入到相应html中，所以需要html任务执行完毕

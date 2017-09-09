@@ -22,9 +22,10 @@ gulp控制主流程，其中js部分扔给webpack编译
   
 ### 开发说明
 1. 开发时HTML文件放在src/app,通用文件(header,footer)可以新建个文件夹引入,支持静态引入@@include("./xxx/xxx.html")见index.html的做法
-1. 保持html和对应的js,less(sass)名一致,可以自行选择使用less，sass还是css，在css目录下新建对应文件就行，会自动编译
+1. 保持html和对应的js,less名一致,可以自行选择使用less还是css，在css目录下新建对应文件就行，会自动编译
 1. 需要自己在html引入文件路径写`编译完后`的路径"../css/xxx","../js/xxx","../lib/xxx/xxx"
 1. 第三方库的话能用bower就用bower安装，装在src/lib/bower下，没有bower的就下载完放到src/lib下，然后正常引入就好，注意顺序
+1. 备注：sass编译好想要python依赖，若一定要使用的话在package.json的devDependencies里加上"gulp-sass": "^3.1.0",并取消gulpfile.js相应注释(sass的引入以及sass和style的task)
 
 ### 解决的问题
 1. js编译，可以愉快的使用es6了
